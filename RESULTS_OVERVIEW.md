@@ -50,8 +50,7 @@ confirms FC-1/FC-2/FC-3 and motivates FW1 (LLM semantic guard) as future work.
 
 ## Reproducibility
 
-- Demo notebook: `scripts/Demo_Colab_3Layer.ipynb`
-- Full evaluation: `scripts/Run_Full_Benchmarks_Colab.ipynb`
+- Demo notebook: `scripts/Demo_Colab_Full_System.ipynb`
 - Full benchmark runner: `scripts/run_all_experiments.sh`
 - Formal model: `formal/did_safety.smv`
 - Proof certificate: `formal/proof_certificate_nusmv.txt`

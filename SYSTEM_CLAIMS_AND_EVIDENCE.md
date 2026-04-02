@@ -68,8 +68,7 @@ system/liveness specifications not counted in the safety PCR.
 
 ## Claim 7: Reproducible System
 ### Evidence
-- `scripts/Demo_Colab_3Layer.ipynb` — Interactive Colab demo notebook
-- `scripts/Run_Full_Benchmarks_Colab.ipynb` — Full benchmark reproduction notebook
+- `scripts/Demo_Colab_Full_System.ipynb` — Interactive Colab demo notebook
 - `scripts/demo.py` — Command-line demo (text-only, no GPU required)
 - `requirements.txt` — Full dependency list with version pins and GPU/optional annotations
 

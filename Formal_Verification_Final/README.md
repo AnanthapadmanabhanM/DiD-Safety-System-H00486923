@@ -54,10 +54,12 @@ holds for all reachable states of the Layer-3 FSM.
 | P29 NO_CORNERING_HUMAN | CRITICAL | PASS |
 | P30 NO_OPEN_SWING_INTO_HUMAN | HIGH | PASS |
 
-### Full model (41 specs): 32/41 pass (PCR=0.78)
-9 system integration specs fail due to abstract model limitations:
-- Non-AI2-THOR actions (ThrowObject, PushObject etc.) not in whitelist
-- End-to-end pipeline specs exceed abstract FSM scope
+Full model (41 specs): 32/41 pass (PCR = 0.78)
+
+Note:
+- The 41 specifications include both core safety properties and extended system-level integration checks.
+- All 30 core safety properties are verified TRUE (PCR = 1.00).
+- The remaining 9 specifications fail due to abstraction limitations of the model (not safety violations in the implementation).
 
 These are NOT safety failures in the implementation.
 

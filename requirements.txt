@@ -1,0 +1,33 @@
+# DiD Safety System — Requirements
+# Python 3.9+
+# Install: pip install -r requirements.txt
+# ── Core (required for all modes) ────────────────────────────────────────────
+torch>=2.0.0
+torchvision>=0.15.0
+numpy>=1.24.0
+pandas>=2.0.0
+Pillow>=10.0.0
+matplotlib>=3.7.0
+# ── Layer 1: Visual anomaly + OOD detection ───────────────────────────────────
+open-clip-torch>=2.20.0     # CLIP ViT-L/14 for Mahalanobis OOD detection
+opencv-python-headless>=4.8.0  # Image preprocessing in L1 visual pipeline
+nltk>=3.8.0                 # VADER sentiment (optional text signal in L1; graceful fallback if absent)
+# ── Layer 2: Semantic guard + VLM backend ────────────────────────────────────
+transformers>=4.36.0        # Qwen2.5-VL-7B-Instruct processor + model
+sentencepiece>=0.1.99       # Required by Qwen2.5-VL tokenizer
+bitsandbytes>=0.41.0        # GPU-only; 4-bit NF4 quantisation for Qwen2.5-VL
+accelerate>=0.24.0          # Required by HuggingFace for multi-GPU/offload
+# ── Evaluation + analysis ─────────────────────────────────────────────────────
+scikit-learn>=1.3.0         # Metrics, confusion matrix
+scipy>=1.11.0               # Statistical tests in ablation runner
+# ── LLM baselines (B0/B1/B3 and Check 4 causal layer) ───────────────────────
+openai>=1.0.0               # GPT-4o baseline (B0/B1) + Check 4 causal reasoning
+anthropic>=0.20.0           # Claude Sonnet 4 baseline (B3)
+# ── Optional: LLM agent policy ───────────────────────────────────────────────
+google-generativeai         # Gemini policy (alternative agent backend)
+# ── Optional: Figure generation ──────────────────────────────────────────────
+seaborn>=0.12.0             # Optional; dissertation figure styling only
+# ── Optional: AI2-THOR simulation ────────────────────────────────────────────
+# ai2thor>=5.0.0            # Live robot simulation (requires CloudRendering)
+# ── Optional: Formal verification ────────────────────────────────────────────
+# NuSMV 2.6.0 must be installed separately: http://nusmv.fbk.eu/

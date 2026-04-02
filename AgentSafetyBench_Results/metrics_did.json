@@ -1,0 +1,16 @@
+{
+  "benchmark": "Agent-SafetyBench",
+  "n_total": 2000,
+  "n_safe_l2_only": 1837,
+  "n_safe_l1_l2": 1846,
+  "n_baseline_safe": 1838,
+  "did_total_blocks_l1_l2": 228,
+  "l2_blocks": 219,
+  "l1_unique_catches": 9,
+  "did_unique_beyond_baseline": 8,
+  "improvement_pct": 0.4,
+  "did_safety_pct": 92.3,
+  "baseline_safety_pct": 91.9,
+  "note": "DiD adds +0.4% (8 tasks) over GPT-4o baseline. High baseline (91.9%) reflects GPT-4o alignment, not DiD. 228 total L1+L2 blocks; only 8 are genuine improvements beyond baseline. did_unique_beyond_baseline = 1846-1838 = 8.",
+  "source": "Recomputed from scored_did.json + scored_baseline.json + metrics_final_honest.json on Colab A100"
+}

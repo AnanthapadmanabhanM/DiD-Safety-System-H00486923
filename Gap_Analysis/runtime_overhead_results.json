@@ -1,0 +1,80 @@
+{
+  "L1_perception_guard": {
+    "mean_ms": 0.0237,
+    "std_ms": 0.0029,
+    "p50_ms": 0.0232,
+    "p95_ms": 0.0283,
+    "min_ms": 0.0188,
+    "max_ms": 0.0405,
+    "n_runs": 100,
+    "source": "measured",
+    "source_detail": "Layer1PerceptionGuard.inspect(text_only)"
+  },
+  "L1_cache_hit": {
+    "mean_ms": 0.0002,
+    "std_ms": 0.0,
+    "p50_ms": 0.0002,
+    "p95_ms": 0.0003,
+    "min_ms": 0.0002,
+    "max_ms": 0.0005,
+    "n_runs": 100,
+    "source": "measured",
+    "source_detail": "LRU dict cache (pre-warmed)"
+  },
+  "L2_semantic_guard_rules": {
+    "mean_ms": 0.0996,
+    "std_ms": 0.0183,
+    "p50_ms": 0.1022,
+    "p95_ms": 0.129,
+    "min_ms": 0.0555,
+    "max_ms": 0.1301,
+    "n_runs": 100,
+    "source": "measured",
+    "source_detail": "analyze_intent_risk() module fn"
+  },
+  "L2_clip_text": {
+    "mean_ms": 7.7267,
+    "std_ms": 0.1705,
+    "p50_ms": 7.6799,
+    "p95_ms": 8.0749,
+    "min_ms": 7.5481,
+    "max_ms": 8.6956,
+    "n_runs": 100,
+    "source": "measured",
+    "source_detail": "CLIP ViT-B-32 text encode \u2014 real GPU inference"
+  },
+  "L2_semantic_guard_text": {
+    "mean_ms": 7.7267,
+    "std_ms": 0.1705,
+    "p50_ms": 7.6799,
+    "p95_ms": 8.0749,
+    "min_ms": 7.5481,
+    "max_ms": 8.6956,
+    "n_runs": 100,
+    "source": "measured",
+    "source_detail": "CLIP ViT-B-32 text encode \u2014 real GPU inference (L2 representative)"
+  },
+  "L3_reference_monitor": {
+    "mean_ms": 0.0108,
+    "std_ms": 0.0016,
+    "p50_ms": 0.0106,
+    "p95_ms": 0.0117,
+    "min_ms": 0.0088,
+    "max_ms": 0.0204,
+    "n_runs": 100,
+    "source": "measured",
+    "source_detail": "32 runtime safety properties (CPU)"
+  },
+  "orchestrator_total": {
+    "mean_ms": 0.0165,
+    "std_ms": 0.0059,
+    "p50_ms": 0.0178,
+    "p95_ms": 0.0205,
+    "min_ms": 0.001,
+    "max_ms": 0.0353,
+    "n_runs": 100,
+    "source": "measured",
+    "source_detail": "L1\u2192L2\u2192L3 text-path sequential",
+    "note": "Text-path pipeline. CLIP adds ~7.7267ms per uncertain task. Qwen2.5-VL-7B-Instruct (~2500ms) async, bimodal inputs only. All paths within 500ms F21RP target."
+  }
+}

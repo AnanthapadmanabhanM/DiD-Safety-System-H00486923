@@ -1,0 +1,18 @@
+{
+  "tp": 327,
+  "fp": 33,
+  "fn": 123,
+  "tn": 267,
+  "precision": 0.9083333333333333,
+  "recall": 0.7266666666666667,
+  "f1": 0.8074074074074075,
+  "baseline_refused": 294,
+  "did_extra": 33,
+  "sources": {
+    "none": 390,
+    "Qwen3_VL": 20,
+    "L2_rules_clip": 15,
+    "GPT4o_self_refuse": 324,
+    "L1_text": 1
+  }
+}

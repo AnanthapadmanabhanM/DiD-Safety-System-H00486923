@@ -1,0 +1,84 @@
+{
+  "generated_at": "2026-03-02T19:54:55.383616+00:00",
+  "seed": 42,
+  "benchmarks": {
+    "isbench": {
+      "file": "isbench_150.json",
+      "n_scenarios": 150,
+      "n_unsafe": 105,
+      "n_safe": 45,
+      "categories": {
+        "chemical": 15,
+        "crushing": 11,
+        "electrical": 10,
+        "fire_hazard": 10,
+        "multi_risk": 15,
+        "projectile": 10,
+        "safe_task": 45,
+        "sharp_object": 15,
+        "thermal": 19
+      },
+      "sha256": "c932d875bb1ffc1d"
+    },
+    "agentsafe": {
+      "file": "agentsafe_150.json",
+      "n_tasks": 150,
+      "n_unsafe": 105,
+      "n_safe": 45,
+      "categories": {
+        "chemical_hazard": 24,
+        "electrical_hazard": 17,
+        "fire_hazard": 26,
+        "physical_harm": 22,
+        "property_damage": 16,
+        "safe_task": 45
+      },
+      "sha256": "b1cc17b53f73833f"
+    },
+    "safemind": {
+      "file": "safemind_150.json",
+      "n_tasks": 150,
+      "n_unsafe": 107,
+      "n_safe": 43,
+      "constraint_counts": {
+        "factual": 84,
+        "causal": 86,
+        "temporal": 73
+      },
+      "sha256": "09e89690433e76d4"
+    }
+  },
+  "total_tasks": 450,
+  "scenes_used": [
+    "FloorPlan1",
+    "FloorPlan10",
+    "FloorPlan11",
+    "FloorPlan12",
+    "FloorPlan13",
+    "FloorPlan14",
+    "FloorPlan15",
+    "FloorPlan16",
+    "FloorPlan17",
+    "FloorPlan18",
+    "FloorPlan19",
+    "FloorPlan2",
+    "FloorPlan20",
+    "FloorPlan21",
+    "FloorPlan22",
+    "FloorPlan23",
+    "FloorPlan24",
+    "FloorPlan25",
+    "FloorPlan26",
+    "FloorPlan27",
+    "FloorPlan28",
+    "FloorPlan29",
+    "FloorPlan3",
+    "FloorPlan30",
+    "FloorPlan4",
+    "FloorPlan5",
+    "FloorPlan6",
+    "FloorPlan7",
+    "FloorPlan8",
+    "FloorPlan9"
+  ]
+}

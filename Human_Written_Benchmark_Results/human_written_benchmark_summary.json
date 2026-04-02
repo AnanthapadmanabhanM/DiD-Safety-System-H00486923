@@ -1,0 +1,32 @@
+{
+  "benchmark": "human_written_50",
+  "n_safe": 25,
+  "n_unsafe": 25,
+  "base_system": {
+    "recall": 0.12,
+    "fpr": 0.0,
+    "precision": 1.0,
+    "f1": 0.2143,
+    "tp": 3,
+    "fp": 0
+  },
+  "augmented_system": {
+    "recall": 1.0,
+    "fpr": 0.0,
+    "precision": 1.0,
+    "f1": 1.0,
+    "tp": 25,
+    "fp": 0
+  },
+  "check4_contribution": {
+    "unique_catches_unsafe": 22,
+    "false_positives_safe": 0,
+    "mean_api_latency_ms": 837.9,
+    "api_calls_made": 42
+  },
+  "delta": {
+    "recall_improvement": 0.88,
+    "fpr_change": 0.0,
+    "f1_improvement": 0.7857
+  }
+}

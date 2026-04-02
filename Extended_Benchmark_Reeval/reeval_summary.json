@@ -1,0 +1,166 @@
+{
+  "indirect_harm_100": {
+    "benchmark": "indirect_harm_100",
+    "n": 100,
+    "n_unsafe": 100,
+    "n_safe": 0,
+    "base": {
+      "recall": 0.01,
+      "fpr": 0.0,
+      "precision": 1.0,
+      "f1": 0.0198,
+      "tp": 1,
+      "fp": 0,
+      "n_unsafe": 100,
+      "n_safe": 0
+    },
+    "augmented": {
+      "recall": 0.59,
+      "fpr": 0.0,
+      "precision": 1.0,
+      "f1": 0.7421,
+      "tp": 59,
+      "fp": 0,
+      "n_unsafe": 100,
+      "n_safe": 0
+    },
+    "delta": {
+      "recall": 0.58,
+      "fpr": 0.0,
+      "f1": 0.7223,
+      "precision": 0.0
+    },
+    "check4_contribution": {
+      "unique_new_catches": 58,
+      "false_positives": 0,
+      "api_calls": 97
+    },
+    "per_group": {
+      "access_hazard": {
+        "n": 15,
+        "base_recall": 0.0,
+        "aug_recall": 0.4
+      },
+      "deferred_hazard": {
+        "n": 20,
+        "base_recall": 0.05,
+        "aug_recall": 0.85
+      },
+      "sequence_hazard": {
+        "n": 15,
+        "base_recall": 0.0,
+        "aug_recall": 0.6
+      },
+      "stored_hazard": {
+        "n": 15,
+        "base_recall": 0.0,
+        "aug_recall": 0.4667
+      },
+      "unattended_appliance": {
+        "n": 15,
+        "base_recall": 0.0,
+        "aug_recall": 0.3333
+      },
+      "unattended_heat": {
+        "n": 20,
+        "base_recall": 0.0,
+        "aug_recall": 0.75
+      }
+    }
+  },
+  "cross_domain_50": {
+    "benchmark": "cross_domain_50",
+    "n": 50,
+    "n_unsafe": 40,
+    "n_safe": 10,
+    "base": {
+      "recall": 0.025,
+      "fpr": 0.0,
+      "precision": 1.0,
+      "f1": 0.0488,
+      "tp": 1,
+      "fp": 0,
+      "n_unsafe": 40,
+      "n_safe": 10
+    },
+    "augmented": {
+      "recall": 0.9,
+      "fpr": 0.0,
+      "precision": 1.0,
+      "f1": 0.9474,
+      "tp": 36,
+      "fp": 0,
+      "n_unsafe": 40,
+      "n_safe": 10
+    },
+    "delta": {
+      "recall": 0.875,
+      "fpr": 0.0,
+      "f1": 0.8986,
+      "precision": 0.0
+    },
+    "check4_contribution": {
+      "unique_new_catches": 35,
+      "false_positives": 0,
+      "api_calls": 49
+    },
+    "per_domain": {
+      "garden": {
+        "n_unsafe": 15,
+        "base_recall": 0.0667,
+        "aug_recall": 0.9333
+      },
+      "laboratory": {
+        "n_unsafe": 15,
+        "base_recall": 0.0,
+        "aug_recall": 1.0
+      },
+      "medical": {
+        "n_unsafe": 10,
+        "base_recall": 0.0,
+        "aug_recall": 0.7
+      }
+    }
+  },
+  "combined_150": {
+    "base": {
+      "recall": 0.0143,
+      "fpr": 0.0,
+      "precision": 1.0,
+      "f1": 0.0282,
+      "tp": 2,
+      "fp": 0,
+      "n_unsafe": 140,
+      "n_safe": 10
+    },
+    "augmented": {
+      "recall": 0.6786,
+      "fpr": 0.0,
+      "precision": 1.0,
+      "f1": 0.8085,
+      "tp": 95,
+      "fp": 0,
+      "n_unsafe": 140,
+      "n_safe": 10
+    },
+    "delta": {
+      "recall": 0.6643,
+      "fpr": 0.0,
+      "f1": 0.7803
+    }
+  },
+  "original_reported": {
+    "indirect_harm_100": {
+      "Recall": 0.01,
+      "Precision": 1.0,
+      "F1": 0.0198,
+      "FPR": 0.0
+    },
+    "cross_domain_50": {
+      "Recall": 0.025,
+      "Precision": 1.0,
+      "F1": 0.0488,
+      "FPR": 0.0
+    }
+  }
+}

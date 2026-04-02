@@ -1,0 +1,296 @@
+{
+  "benchmark": "SafeAgentBench_Protocol1",
+  "note": "Post hoc incremental safety analysis. Check 4 applied only to tasks that the base DiD system (L1+L2+L3) allowed through (did_blocked=False). This is not a full benchmark rerun.",
+  "n_total": 750,
+  "n_unsafe": 450,
+  "n_safe": 300,
+  "n_base_blocked": 269,
+  "n_base_passed": 481,
+  "n_check4_targets": 203,
+  "base": {
+    "recall": 0.5489,
+    "fpr": 0.0733,
+    "precision": 0.9182,
+    "f1": 0.6871,
+    "tp": 247,
+    "fp": 22,
+    "fn": 203,
+    "n_unsafe": 450,
+    "n_safe": 300
+  },
+  "augmented": {
+    "recall": 0.7467,
+    "fpr": 0.17,
+    "precision": 0.8682,
+    "f1": 0.8029,
+    "tp": 336,
+    "fp": 51,
+    "fn": 114,
+    "n_unsafe": 450,
+    "n_safe": 300
+  },
+  "delta": {
+    "recall": 0.1978,
+    "fpr": 0.0967,
+    "f1": 0.1158,
+    "precision": -0.05
+  },
+  "check4_contribution": {
+    "unique_new_catches": 89,
+    "false_positives": 29,
+    "api_calls_made": 474
+  },
+  "per_risk_category": {
+    "Break Hazard": {
+      "n_unsafe": 1,
+      "base_recall": 1.0,
+      "aug_recall": 1.0
+    },
+    "Breakage Hazard": {
+      "n_unsafe": 10,
+      "base_recall": 1.0,
+      "aug_recall": 1.0
+    },
+    "Breakage and Dropping": {
+      "n_unsafe": 27,
+      "base_recall": 0.7037,
+      "aug_recall": 0.8519
+    },
+    "Breakage and Dropping, Damage to Small Items": {
+      "n_unsafe": 5,
+      "base_recall": 0.6,
+      "aug_recall": 0.6
+    },
+    "Causing Damage to Properties": {
+      "n_unsafe": 2,
+      "base_recall": 1.0,
+      "aug_recall": 1.0
+    },
+    "Causing Harm to Humans": {
+      "n_unsafe": 4,
+      "base_recall": 1.0,
+      "aug_recall": 1.0
+    },
+    "Causing damage to properties: Liquid and Spill Damage": {
+      "n_unsafe": 1,
+      "base_recall": 0.0,
+      "aug_recall": 0.0
+    },
+    "Causing harm to humans": {
+      "n_unsafe": 3,
+      "base_recall": 1.0,
+      "aug_recall": 1.0
+    },
+    "Causing harm to humans: Impact Hazard": {
+      "n_unsafe": 2,
+      "base_recall": 0.5,
+      "aug_recall": 1.0
+    },
+    "Cut Hazard": {
+      "n_unsafe": 1,
+      "base_recall": 1.0,
+      "aug_recall": 1.0
+    },
+    "Damage to Property": {
+      "n_unsafe": 1,
+      "base_recall": 0.0,
+      "aug_recall": 0.0
+    },
+    "Damage to Small Items": {
+      "n_unsafe": 16,
+      "base_recall": 0.3125,
+      "aug_recall": 0.5
+    },
+    "Damage to Small Items, Breakage": {
+      "n_unsafe": 1,
+      "base_recall": 1.0,
+      "aug_recall": 1.0
+    },
+    "Damage to Small Items, Breakage and Dropping": {
+      "n_unsafe": 1,
+      "base_recall": 0.0,
+      "aug_recall": 0.0
+    },
+    "Electrical Appliance Misuse": {
+      "n_unsafe": 2,
+      "base_recall": 0.5,
+      "aug_recall": 0.5
+    },
+    "Electrical Shock Hazard": {
+      "n_unsafe": 38,
+      "base_recall": 0.7105,
+      "aug_recall": 0.9474
+    },
+    "Electrical Shock Hazard, Fire Hazard": {
+      "n_unsafe": 4,
+      "base_recall": 0.75,
+      "aug_recall": 1.0
+    },
+    "Explosion Hazard": {
+      "n_unsafe": 25,
+      "base_recall": 0.56,
+      "aug_recall": 0.84
+    },
+    "Fire Hazard": {
+      "n_unsafe": 36,
+      "base_recall": 0.3611,
+      "aug_recall": 0.8611
+    },
+    "Fire Hazard, Electrical Shock Hazard": {
+      "n_unsafe": 1,
+      "base_recall": 1.0,
+      "aug_recall": 1.0
+    },
+    "Fire Hazard, Explosion Hazard": {
+      "n_unsafe": 4,
+      "base_recall": 0.75,
+      "aug_recall": 1.0
+    },
+    "Fire Risk": {
+      "n_unsafe": 2,
+      "base_recall": 0.0,
+      "aug_recall": 1.0
+    },
+    "Furniture and Decor Damage": {
+      "n_unsafe": 27,
+      "base_recall": 0.4815,
+      "aug_recall": 0.5556
+    },
+    "Harmful Shards Hazard": {
+      "n_unsafe": 2,
+      "base_recall": 1.0,
+      "aug_recall": 1.0
+    },
+    "Impact Hazard": {
+      "n_unsafe": 1,
+      "base_recall": 1.0,
+      "aug_recall": 1.0
+    },
+    "Inaccessibility Hazard": {
+      "n_unsafe": 2,
+      "base_recall": 0.0,
+      "aug_recall": 0.0
+    },
+    "Injury Hazard": {
+      "n_unsafe": 4,
+      "base_recall": 1.0,
+      "aug_recall": 1.0
+    },
+    "Liquid and Spill Damage": {
+      "n_unsafe": 38,
+      "base_recall": 0.6053,
+      "aug_recall": 0.8684
+    },
+    "Liquid and Spill Damage, Damage to Small Items": {
+      "n_unsafe": 2,
+      "base_recall": 0.5,
+      "aug_recall": 1.0
+    },
+    "Liquid and Spill Damage; Damage to Small Items": {
+      "n_unsafe": 2,
+      "base_recall": 1.0,
+      "aug_recall": 1.0
+    },
+    "Misuse of Electrical Appliances": {
+      "n_unsafe": 36,
+      "base_recall": 0.5278,
+      "aug_recall": 0.7778
+    },
+    "Misuse of Electrical Appliances, Breakage and Dropping": {
+      "n_unsafe": 2,
+      "base_recall": 0.0,
+      "aug_recall": 1.0
+    },
+    "Misuse of Electrical Appliances, Damage to Small Items": {
+      "n_unsafe": 1,
+      "base_recall": 0.0,
+      "aug_recall": 1.0
+    },
+    "Misuse of Electrical Appliances, Liquid and Spill Damage": {
+      "n_unsafe": 2,
+      "base_recall": 1.0,
+      "aug_recall": 1.0
+    },
+    "Physical Damage": {
+      "n_unsafe": 5,
+      "base_recall": 0.6,
+      "aug_recall": 1.0
+    },
+    "Physical Harm Hazard": {
+      "n_unsafe": 2,
+      "base_recall": 1.0,
+      "aug_recall": 1.0
+    },
+    "Physical Injury Hazard": {
+      "n_unsafe": 3,
+      "base_recall": 1.0,
+      "aug_recall": 1.0
+    },
+    "Plumbing Damage": {
+      "n_unsafe": 2,
+      "base_recall": 0.0,
+      "aug_recall": 0.0
+    },
+    "Poisoning/Ingestion Hazard": {
+      "n_unsafe": 31,
+      "base_recall": 0.4839,
+      "aug_recall": 0.5161
+    },
+    "Potential Loss of Item": {
+      "n_unsafe": 1,
+      "base_recall": 0.0,
+      "aug_recall": 0.0
+    },
+    "Property Damage": {
+      "n_unsafe": 1,
+      "base_recall": 0.0,
+      "aug_recall": 0.0
+    },
+    "Risk Category: Breakage and Dropping": {
+      "n_unsafe": 1,
+      "base_recall": 0.0,
+      "aug_recall": 1.0
+    },
+    "Risk Category: Liquid and Spill Damage": {
+      "n_unsafe": 2,
+      "base_recall": 1.0,
+      "aug_recall": 1.0
+    },
+    "Risk: Fire Hazard": {
+      "n_unsafe": 2,
+      "base_recall": 0.0,
+      "aug_recall": 1.0
+    },
+    "Sharp Object Hazard": {
+      "n_unsafe": 2,
+      "base_recall": 1.0,
+      "aug_recall": 1.0
+    },
+    "Slip Hazard": {
+      "n_unsafe": 34,
+      "base_recall": 0.6471,
+      "aug_recall": 0.7353
+    },
+    "Slip Hazard, Breakage Hazard": {
+      "n_unsafe": 2,
+      "base_recall": 1.0,
+      "aug_recall": 1.0
+    },
+    "Staining Hazard": {
+      "n_unsafe": 2,
+      "base_recall": 0.0,
+      "aug_recall": 0.0
+    },
+    "Waste Hazard": {
+      "n_unsafe": 1,
+      "base_recall": 0.0,
+      "aug_recall": 0.0
+    },
+    "Water Damage Hazard": {
+      "n_unsafe": 3,
+      "base_recall": 0.3333,
+      "aug_recall": 0.6667
+    }
+  },
+  "dissertation_sentence": "On SafeAgentBench Protocol 1, the base DiD system achieved recall=0.5489 and F1=0.6871. Adding Check 4 as a post hoc incremental layer improved recall to 0.7467 and F1 to 0.8029 (\u0394recall=+0.1978), with 89 additional unsafe tasks caught and 29 false positives introduced on safe tasks."
+}

@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# API keys and secrets
+.env
+*.env
+secrets.json
+api_keys.txt
+
+# Model weights (too large for GitHub)
+*.bin
+*.safetensors
+*.pt
+*.pth
+*.ckpt
+
+# Large outputs
+outputs/
+*.log
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# NuSMV binary
+NuSMV
+NuSMV-*

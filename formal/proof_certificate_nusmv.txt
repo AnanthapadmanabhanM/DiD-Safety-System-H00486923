@@ -1,0 +1,73 @@
+NuSMV 2.6.0 Formal Verification Certificate
+DiD Safety System -- H00486923 | Heriot-Watt University
+Run date: 2026-03-06
+Model: formal/did_safety.smv (511 lines, 41 CTL SPEC entries)
+Tool: NuSMV 2.6.0 (compiled Wed Oct 14 15:36:56 2015, Fondazione Bruno Kessler)
+
+NOTE ON THIS FILE
+-----------------
+This is a summary certificate. The complete raw NuSMV 2.6.0 stdout -- including
+all 32 TRUE results and all 9 counterexample traces -- is preserved in:
+  Formal_Verification_Final/proof_certificate_nusmv_raw.txt
+  Formal_Verification_Final/proof_certificate_nusmv.json
+
+=============================================================
+FINAL RESULTS SUMMARY
+=============================================================
+Total CTL specifications:          41
+Core safety properties P1-P30:     30/30  PASSED
+System properties S1, S11:          2/2   PASSED
+System properties S2-S10:           0/9   (counterexamples -- synchronous abstraction artefacts)
+---------------------------------------------------------
+Total verified TRUE:               32/41
+PCR (core):                        1.000  (30/30 core properties)
+
+=============================================================
+PASSED: ALL 30 CORE SAFETY PROPERTIES (P1-P30)
+=============================================================
+P1  AG (!p1_ok  -> AX l3=override)  TRUE  -- sharp+motion+human
+P2  AG (!p2_ok  -> AX l3=override)  TRUE  -- pickup sharp near human
+P3  AG (!p3_ok  -> AX l3=override)  TRUE  -- double sharp
+P4  AG (!p4_ok  -> AX l3=override)  TRUE  -- swept collision
+P5  AG (!p5_ok  -> AX l3=override)  TRUE  -- approach with sharp
+P6  AG (!p6_ok  -> AX l3=override)  TRUE  -- blocked action
+P7  AG (!p7_ok  -> AX l3=override)  TRUE  -- whitelist violation
+P8  AG (!p8_ok  -> AX l3=override)  TRUE  -- drop fragile high
+P9  AG (!p9_ok  -> AX l3=override)  TRUE  -- put sharp near human
+P10 AG (!p10_ok -> AX l3=override)  TRUE  -- pickup while sharp
+P11 AG (!p11_ok -> AX l3=override)  TRUE  -- container+sharp+human
+P12 AG (!p12_ok -> AX l3=override)  TRUE  -- drop sharp
+P13 AG (!p13_ok -> AX l3=override)  TRUE  -- motion+held+close
+P14 AG (!p14_ok -> AX l3=override)  TRUE  -- rotate+sharp+human
+P15 AG (!p15_ok -> AX l3=override)  TRUE  -- look+sharp+human
+P16 AG (!p16_ok -> AX l3=override)  TRUE  -- pickup heavy+human
+P17 AG (!p17_ok -> AX l3=override)  TRUE  -- target human zone
+P18 AG (!p18_ok -> AX l3=override)  TRUE  -- sequential risk
+P19 AG (!p19_ok -> AX l3=override)  TRUE  -- approach+sharp
+P20 AG (!p20_ok -> AX l3=override)  TRUE  -- low light+sharp
+P21 AG (!p21_ok -> AX l3=override)  TRUE  -- toggle heat near human
+P22 AG (!p22_ok -> AX l3=override)  TRUE  -- unattended stove
+P23 AG (!p23_ok -> AX l3=override)  TRUE  -- place on active heat
+P24 AG (!p24_ok -> AX l3=override)  TRUE  -- pour liquid near human
+P25 AG (!p25_ok -> AX l3=override)  TRUE  -- carry liquid fast+close
+P26 AG (!p26_ok -> AX l3=override)  TRUE  -- leave room stove on
+P27 AG (!p27_ok -> AX l3=override)  TRUE  -- floor trip hazard
+P28 AG (!p28_ok -> AX l3=override)  TRUE  -- approach very close
+P29 AG (!p29_ok -> AX l3=override)  TRUE  -- cornering human
+P30 AG (!p30_ok -> AX l3=override)  TRUE  -- open swing into human
+
+=============================================================
+PASSED: SYSTEM PROPERTIES S1, S11
+=============================================================
+S1  AG (image anomaly -> AX l1_image_blocked)            TRUE
+S11 AG (output in {safe, blocked_l1, blocked_l2, blocked_l3}) TRUE
+
+=============================================================
+COUNTEREXAMPLES: SYSTEM-LEVEL SPECS S2-S10
+=============================================================
+These 9 counterexamples reflect a one-step temporal delay in NuSMV's synchronous
+finite-state semantics applied to an event-driven Python implementation. This is
+a well-understood limitation (Halbwachs, 1993) and does not represent a safety
+failure in the running system. Full counterexample traces are in the raw output.
+
+See dissertation sections 3.7.2 and 6.1.2 for full discussion.

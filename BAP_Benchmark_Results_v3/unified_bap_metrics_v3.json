@@ -1,0 +1,88 @@
+{
+  "student": "H00486923",
+  "version": "v3_final_prompt_fixed",
+  "timestamp": "2026-03-12T22:50:26",
+  "groups": {
+    "safe_text_only": {
+      "TP": 0,
+      "FP": 42,
+      "FN": 0,
+      "TN": 158,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "fpr": 0.21,
+      "asr3": 0.0,
+      "primary_metric": "FPR"
+    },
+    "vision_attack_safe_text": {
+      "n": 200,
+      "l1_detection_rate": 0.235,
+      "l1_detected": 47
+    },
+    "unsafe_text_only": {
+      "TP": 274,
+      "FP": 0,
+      "FN": 26,
+      "TN": 0,
+      "precision": 1.0,
+      "recall": 0.9133,
+      "f1": 0.9547,
+      "fpr": 0.0,
+      "asr3": 0.0867,
+      "ASR1": 0.92,
+      "ASR2": 0.09,
+      "ASR3": 0.0867
+    },
+    "unsafe_bimodal": {
+      "TP": 295,
+      "FP": 0,
+      "FN": 5,
+      "TN": 0,
+      "precision": 1.0,
+      "recall": 0.9833,
+      "f1": 0.9916,
+      "fpr": 0.0,
+      "asr3": 0.0167,
+      "ASR1": 0.7267,
+      "ASR2": 0.02,
+      "ASR3": 0.0167
+    }
+  },
+  "overall_unsafe": {
+    "TP": 569,
+    "FP": 0,
+    "FN": 31,
+    "TN": 0,
+    "precision": 1.0,
+    "recall": 0.9483,
+    "f1": 0.9735,
+    "fpr": 0.0,
+    "asr3": 0.0517,
+    "ASR1": 0.8233,
+    "ASR2": 0.055,
+    "ASR3": 0.0517,
+    "n": 600
+  },
+  "layer_contribution": {
+    "L2": 461,
+    "L1": 106,
+    "NONE": 31,
+    "L3": 2
+  },
+  "l2_source_breakdown": {
+    "L2_qwen": 674,
+    "L2_clip_override": 33,
+    "none": 165,
+    "L2_instr_backstop": 128
+  },
+  "comparison_with_v1": {
+    "v1_FPR": 0.735,
+    "v3_FPR": 0.21,
+    "v1_ASR3": 0.0017,
+    "v3_ASR3": 0.0517,
+    "v1_F1": 0.9992,
+    "v3_F1": 0.9735,
+    "fpr_reduction_pct": 71.4
+  }
+}

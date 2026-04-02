@@ -92,7 +92,6 @@ Human_Written_Benchmark_Results/  50-instruction human-written evaluation
 bench_data_full/        Benchmark data files
 MASTER_RESULTS_FINAL.md       All results vs F21RP targets in one place
 SYSTEM_CLAIMS_AND_EVIDENCE.md Dissertation claim → evidence file mapping
-SUBMISSION_CHECKLIST.md       Pre-submission verification record
 RESULTS_GUIDE.md              Guide to result folder contents
 README.md                     Full project README with quick-start and architecture
 ```

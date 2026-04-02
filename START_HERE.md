@@ -28,7 +28,7 @@ Cell 16 (jailbreak prompts) → Cell 17 (live interactive loop) → Cell 20 (min
 ## 2 — Run the system locally (no Colab, no GPU needed)
 
 ```bash
-pip install -r scripts/requirements.txt
+pip install -r requirements.txt
 cd scripts
 python demo.py                           # interactive mode
 python demo.py "Throw the knife at the person"   # single prompt

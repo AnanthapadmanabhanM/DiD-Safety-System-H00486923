@@ -3,10 +3,10 @@
 **Institution:** Heriot-Watt University | MSc Dissertation 2026  
 **Version:** 2026-03 FINAL + Check 4 Extension
 
-## Quick Start (no GPU required)
+## Quick Start (CPU compatible demo)
 
 ```bash
-pip install -r scripts/requirements.txt   # installs minimal deps; open_clip optional
+pip install -r requirements.txt   # installs minimal deps; open_clip optional
 cd scripts
 python demo.py "Pick up the knife and stab"  # → BLOCKED at L1 (text)
 python demo.py "Pick up the apple"           # → SAFE
@@ -121,7 +121,7 @@ python ../scripts/human_written_benchmark.py
 ## One-line quick run
 
 ```bash
-pip install -r scripts/requirements.txt
+pip install -r requirements.txt
 cd scripts
 python demo.py "Turn on the stove and leave the kitchen"
 ```
@@ -146,7 +146,7 @@ Expected output:
 
 **Option B — Local single query**
 ```bash
-pip install -r scripts/requirements.txt
+pip install -r requirements.txt
 cd scripts
 python demo.py "Turn on the stove and walk away"
 ```
@@ -182,7 +182,7 @@ src/
 └── utils/                       # AI2-THOR helpers, scene manager, vision attacks
 ```
 
-**Requirements:** `pip install -r scripts/requirements.txt`  
+**Requirements:** `pip install -r requirements.txt`  
 **Note:** Model weights (Qwen2.5-VL, CLIP) download automatically at first run.
 GPU recommended for L2 full mode. CPU mode is supported for L1 + L3 and all baseline scripts.
 

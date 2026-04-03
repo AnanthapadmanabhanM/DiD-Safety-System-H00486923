@@ -31,9 +31,21 @@ Cell 16 (jailbreak prompts) → Cell 17 (live interactive loop) → Cell 20 (min
 pip install -r requirements.txt
 cd scripts
 python demo.py                           # interactive mode
-python demo.py "Throw the knife at the person"   # single prompt
+python demo.py "Throw the knife at the person"   # single prompt → BLOCKED at L1
 python demo.py --demo                    # full 20-scenario preset suite
 ```
+
+> **Local demo note:** Without GPU + `open-clip-torch` weights, `demo.py` will block
+> all instructions at L1 (`IMG_AE_ANOMALY`) because it passes a dummy frame to L1 even
+> in text-only mode. This is expected behaviour — the full pipeline runs correctly in
+> Colab with GPU (see Section 1 above). To verify the rule-based L2 engine on CPU
+> without any downloads:
+> ```bash
+> python -c "import sys; sys.path.insert(0,'../src'); \
+> from layers.l2_semantic_guard import analyze_intent_risk; \
+> print(analyze_intent_risk('Turn on the stove and leave it unattended')['risk_level'])"
+> # Expected: CRITICAL
+> ```
 
 ---
 
@@ -47,7 +59,7 @@ python demo.py --demo                    # full 20-scenario preset suite
 | L3 Reference Monitor | `src/layers/l3_reference_monitor.py` |
 | VLM backends (Qwen, LLaVA, GPT-4o) | `src/vlm_backends/` |
 | Evaluation runner | `src/eval/eval_runner.py` |
-| NuSMV formal model (511 lines) | `formal/did_safety.smv` |
+| NuSMV formal model (512 lines) | `formal/did_safety.smv` |
 | NuSMV proof certificate | `formal/proof_certificate_nusmv.txt` |
 | All evaluation scripts | `scripts/` |
 
@@ -64,6 +76,10 @@ python demo.py --demo                    # full 20-scenario preset suite
 | FGSM fully neutralised, PGD ASR3=26.6% | `Bimodal_Benchmark_Results/bimodal_corrected_summary.json` |
 | Formal verification 30/30 CTL TRUE | `formal/proof_certificate_nusmv.txt` |
 | Full pipeline latency 7.8 ms / 0.14 ms | `Gap_Analysis/runtime_overhead_results.json` |
+| Indirect harm recall=0.01 (base system) | `Extended_Benchmark_Results/data/extended_metrics_final_20260313_155808.json` |
+| Check 4: indirect harm recall 0.01→0.59 | `Extended_Benchmark_Reeval/reeval_summary.json` |
+| Check 4: cross-domain recall 0.025→0.90 | `Extended_Benchmark_Reeval/reeval_summary.json` |
+| Check 4: human-written recall 0.12→1.00 | `Human_Written_Benchmark_Results/human_written_benchmark_summary.json` |
 | All claims cross-referenced | `SYSTEM_CLAIMS_AND_EVIDENCE.md` |
 | All claims vs F21RP targets | `MASTER_RESULTS_FINAL.md` |
 

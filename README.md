@@ -14,12 +14,21 @@ python demo.py --demo                        # → Full preset demo
 ```
 
 > **Note on demo output:** The demo runs in text-only mode by default.
-> If `open_clip` is not installed, CLIP/image OOD detection is disabled
-> (L1 text detection still runs). Startup latency shown in demo output
-> includes model-loading overhead and does not reflect the per-query
-> pipeline latency reported in the dissertation (0.024 ms L1 text,
-> 7.73 ms L2 CLIP, 0.011 ms L3, total ~7.8 ms measured full-pipeline;
-> rule-based fast path 0.14 ms — all on Colab A100 GPU).
+> If `open_clip` is not installed or CLIP weights cannot be downloaded, `demo.py`
+> will block **all** instructions at L1 (`IMG_AE_ANOMALY`) because it passes a
+> dummy zero-frame to L1 even in text-only mode. This is a Colab-environment
+> assumption — the full pipeline works correctly in Colab with GPU.
+> To verify the core rule-based L2 engine on CPU without any downloads:
+> ```bash
+> python -c "import sys; sys.path.insert(0,'../src'); \
+> from layers.l2_semantic_guard import analyze_intent_risk; \
+> r = analyze_intent_risk('Turn on the stove and leave it unattended'); \
+> print(r['risk_level'])"   # → CRITICAL
+> ```
+> Startup latency shown in demo output includes model-loading overhead and does
+> not reflect the per-query pipeline latency reported in the dissertation
+> (0.024 ms L1 text, 7.73 ms L2 CLIP, 0.011 ms L3, total ~7.8 ms full-pipeline;
+> rule-based fast path 0.14 ms — all measured on Colab A100 GPU).
 > Full visual/OOD functionality requires: `pip install open-clip-torch>=2.20.0`
 
 **What is precomputed** (no rerun needed): all dissertation result folders, NuSMV proof certificate.  
@@ -96,10 +105,9 @@ The FPR increase on SafeAgentBench is discussed honestly in dissertation Section
 To reproduce all Check 4 results:
 ```bash
 export OPENAI_API_KEY="sk-..."
-cd src
-python ../scripts/reeval_extended_with_check4.py
-python ../scripts/reeval_safeagentbench_with_check4.py
-python ../scripts/human_written_benchmark.py
+python scripts/reeval_extended_with_check4.py
+python scripts/reeval_safeagentbench_with_check4.py
+python scripts/human_written_benchmark.py
 ```
 
 ---
@@ -112,7 +120,7 @@ python ../scripts/human_written_benchmark.py
 | Read the dissertation | Submitted separately via HWU submission portal |
 | See the main results | `MASTER_RESULTS_2026_03_06.json` or `RESULTS_OVERVIEW.md` |
 | Run the live demo | `scripts/Demo_Colab_Full_System.ipynb` (Colab T4 recommended) |
-| Reproduce benchmarks | `scripts/Run_Full_Benchmarks_Colab.ipynb` |
+| Reproduce benchmarks | Precomputed results in result folders (see `RESULTS_GUIDE.md`); individual scripts in `scripts/` (e.g. `scripts/ablation_runner.py`, `scripts/baseline_comparison.py`) |
 | Browse the source code | `src/` — see architecture below |
 | Check formal verification | `formal/proof_certificate_nusmv.txt` + `formal/did_safety.smv` |
 
@@ -126,11 +134,25 @@ cd scripts
 python demo.py "Turn on the stove and leave the kitchen"
 ```
 
-Expected output:
+Expected output (Colab with GPU + CLIP weights):
 ```
   Prompt: "Turn on the stove and leave the kitchen"
-  🚨  BLOCKED  ─ Layer-2 Semantic Guard
+  🚨  BLOCKED  ─ Layer-2 Semantic Guard  (THERMAL_FIRE_HAZARD)
 ```
+
+Expected output (CPU-only, no CLIP weights downloaded):
+```
+  Prompt: "Turn on the stove and leave the kitchen"
+  🚨  BLOCKED  ─ Layer-1 Perception (text anomaly)
+```
+
+> **Note:** In CPU-only mode without `open-clip-torch` weights, L1 raises `IMG_AE_ANOMALY`
+> on the dummy frame and blocks at L1. The correct L2 semantic block (`THERMAL_FIRE_HAZARD`)
+> is demonstrated in the Colab notebook (Cell 15) and in `scripts/did_demo_ui.html`.
+> The rule-based engine `analyze_intent_risk()` correctly classifies this as `CRITICAL`
+> in all environments — verify directly: `python -c "import sys; sys.path.insert(0,'src');
+> from layers.l2_semantic_guard import analyze_intent_risk;
+> print(analyze_intent_risk('Turn on the stove and leave the kitchen')['risk_level'])"`
 
 ---
 
@@ -151,10 +173,16 @@ cd scripts
 python demo.py "Turn on the stove and walk away"
 ```
 
-**Option C — Reproduce full benchmark (Colab A100, ~12 min)**
+**Option C — Reproduce individual evaluations**
 ```
-Open scripts/Run_Full_Benchmarks_Colab.ipynb → Run all
-Outputs replace files in Custom_Benchmark_Results/ and Gap_Analysis/
+All primary results are precomputed in the result folders — no full re-run required.
+To reproduce a specific evaluation (e.g. ablation study, baseline comparison):
+  cd scripts
+  python ablation_runner.py          # 7-config ablation study
+  python baseline_comparison.py      # B0-B4 comparison (requires API keys)
+  python gap1_runtime_overhead.py    # runtime latency measurements
+See scripts/README.md for the full list of reproduction scripts.
+Note: run these from the scripts/ directory (cd scripts first).
 ```
 
 **Runtime note:** L1 + L3 run on CPU. L2 full mode (Qwen2.5-VL-7B-Instruct) requires GPU.
@@ -170,16 +198,26 @@ src/
 ├── layers/
 │   ├── l1_perception_guard.py  # Layer 1: Autoencoder + CLIP OOD + text anomaly
 │   ├── l2_semantic_guard.py    # Layer 2: Rule-based + CLIP semantic + Qwen2.5-VL
-│   └── l3_reference_monitor.py # Layer 3: 32 formal runtime safety properties
+│   ├── l3_reference_monitor.py # Layer 3: 32 formal runtime safety properties
+│   └── l2_check4_causal.py     # Check 4: causal harm reasoning extension
 ├── eval/
-│   ├── eval_runner.py           # Batch evaluation + per-layer metrics
-│   └── ablation_runner.py       # Ablation study runner
+│   └── eval_runner.py           # Batch evaluation + per-layer metrics
 ├── bench/                       # Benchmark loaders and prompt generators
 ├── bench_adapters/              # Adapters for IS-Bench, SafeMind, AgentSafe
 ├── official_wrappers/           # SafeAgentBench official protocol wrappers
 ├── agent/                       # LLM policy wrapper (GPT-4o / Gemini / mock)
 ├── formal/                      # NuSMV model generation and verification scripts
 └── utils/                       # AI2-THOR helpers, scene manager, vision attacks
+
+scripts/
+├── Demo_Colab_Full_System.ipynb # Full Colab demo notebook (viva-ready)
+├── demo.py                      # Command-line demo (CPU compatible)
+├── ablation_runner.py           # 7-configuration layer ablation study
+├── baseline_comparison.py       # B0–B4 baseline comparison (requires API keys)
+├── gap1_runtime_overhead.py     # Latency measurements
+├── gap2_failure_case_analysis.py# Failure case analysis
+├── gap3_adversarial_breakdown_v2.py # Adversarial robustness breakdown
+└── generate_dissertation_figures.py # Reproduce all dissertation figures
 ```
 
 **Requirements:** `pip install -r requirements.txt`  

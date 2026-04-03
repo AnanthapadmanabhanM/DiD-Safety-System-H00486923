@@ -4,7 +4,7 @@
 
 ---
 
-## 1 — Run the live demo (examiner / viva)
+## 1 — Run the live demo
 
 Open this file in Google Colab and run the cells in order:
 

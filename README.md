@@ -1,4 +1,4 @@
-# H00486923 — Triple-Layer Defense-in-Depth Safety System
+# TRIDENT — Triple-Layer Defense-in-Depth Safety System
 **Student:** Ananthapadmanabhan Manoj | H00486923  
 **Institution:** Heriot-Watt University | MSc Dissertation 2026  
 **Version:** 2026-03 FINAL + Check 4 Extension
